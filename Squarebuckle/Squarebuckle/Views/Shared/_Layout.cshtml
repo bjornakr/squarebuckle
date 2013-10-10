@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <script type="text/javascript" src="~/Scripts/jquery-2.0.3.js"></script>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @RenderSection("scriptIncludes", required: false)
+    
+</head>
+<body>
+    @RenderBody()
+    
     
     <script>
         @RenderSection("scripts", required: false)
     </script>
     
-</head>
-<body>
-    @RenderBody()
 </body>
 </html>

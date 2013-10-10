@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Squarebuckle.Models;
 
+
 namespace Squarebuckle.Controllers
 {
     public class MainController : Controller
@@ -20,12 +21,12 @@ namespace Squarebuckle.Controllers
 
         public string Hello()
         {
-            return "Hello";
+            return "{ name: 'arne' }";
         }
 
-        public string SquareMeUp(string name)
+        public ActionResult SquareMeUp(string name)
         {
-            return "Hello " + name;
+            return Json(new { foo = "bar", baz = "Blech" });
         }
     }
 }

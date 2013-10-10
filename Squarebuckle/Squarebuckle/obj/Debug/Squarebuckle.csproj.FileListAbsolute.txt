@@ -25,6 +25,6 @@ Z:\Dokumenter\Programmering\squarebuckle\Squarebuckle\Squarebuckle\bin\System.We
 Z:\Dokumenter\Programmering\squarebuckle\Squarebuckle\Squarebuckle\bin\System.Web.WebPages.xml
 Z:\Dokumenter\Programmering\squarebuckle\Squarebuckle\Squarebuckle\bin\System.Web.WebPages.Deployment.xml
 Z:\Dokumenter\Programmering\squarebuckle\Squarebuckle\Squarebuckle\bin\System.Web.WebPages.Razor.xml
-Z:\Dokumenter\Programmering\squarebuckle\Squarebuckle\Squarebuckle\obj\Debug\Squarebuckle.csprojResolveAssemblyReference.cache
 Z:\Dokumenter\Programmering\squarebuckle\Squarebuckle\Squarebuckle\obj\Debug\Squarebuckle.dll
 Z:\Dokumenter\Programmering\squarebuckle\Squarebuckle\Squarebuckle\obj\Debug\Squarebuckle.pdb
+Z:\Dokumenter\Programmering\squarebuckle\Squarebuckle\Squarebuckle\obj\Debug\Squarebuckle.csprojResolveAssemblyReference.cache
