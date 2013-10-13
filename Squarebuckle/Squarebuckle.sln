@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Express 2013 for Web
+VisualStudioVersion = 12.0.20827.3
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Squarebuckle", "Squarebuckle\Squarebuckle.csproj", "{0223E62E-878A-46B6-B908-46570FDC4265}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Squarebuckle.Tests", "Squarebuckle.Tests\Squarebuckle.Tests.csproj", "{198AD528-3250-4D65-B58E-7198D9482CC4}"
