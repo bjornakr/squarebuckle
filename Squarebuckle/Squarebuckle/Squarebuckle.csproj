@@ -125,6 +125,8 @@
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Core\Tile.cs" />
     <Compile Include="Core\WorldMap.cs" />
+    <Compile Include="Core\WorldMapBuilder.cs" />
+    <Compile Include="Core\WorldMapToJsonConverter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

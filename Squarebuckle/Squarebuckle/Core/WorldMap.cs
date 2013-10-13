@@ -7,27 +7,33 @@ namespace Squarebuckle.Core
 {
     public class WorldMap
     {
-        public WorldMap(int i, int i1)
-        {
-            
-        }
+        private readonly Tile[,] _tiles;
 
-        public int TileCount
+        public Tile this[int x, int y]
         {
-            get { return 0; }
-        }
-
-        public Tile[,] Tiles
-        {
-            get {
-                var tiles = new Tile[0,0];
-                return tiles;
+            get
+            {
+                return _tiles[x, y];
+            }
+            set
+            {
+                _tiles[x, y] = value;
             }
         }
 
-        public string ToJson()
+        public WorldMap(int height, int width)
         {
-            return "";
+            _tiles = new Tile[height, width];
+        }
+
+        public int Height
+        {
+            get { return _tiles.GetLength(0); }
+        }
+
+        public int Width
+        {
+            get { return _tiles.GetLength(1); }
         }
     }
 }

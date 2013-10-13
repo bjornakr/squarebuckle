@@ -96,6 +96,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\EmptyWorldMapBuilder.cs" />
+    <Compile Include="Core\TileTest.cs" />
+    <Compile Include="Core\WorldMapToJsonConverterTest.cs" />
     <Compile Include="Core\WorldMapTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
