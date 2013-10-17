@@ -192,6 +192,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\worldMapFetcher.js" />
+    <Content Include="Scripts\worldMapRenderer.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Test\a.html" />
