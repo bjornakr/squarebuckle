@@ -1,6 +1,5 @@
 var Game = (function() {
     var Game = function() {
-        this._worldMap = "hei";
     };
 
     Object.defineProperty(Game.prototype, "worldMap", {

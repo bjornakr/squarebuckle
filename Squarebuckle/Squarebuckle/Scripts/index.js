@@ -1,10 +1,21 @@
-﻿$(function () {
-    $("#try_me_button").click(function () {
+﻿console.log("ZIP!");
+
+
+$(function () {
+    $("#new_map_btn").click(function () {
+        console.log("POW!");
+        var game = new Game();
+        game.start();
+        
+        var c=document.getElementById("world_map_canvas");
+        var ctx=c.getContext("2d");
+        var renderer = new WorldMapRenderer(ctx);
+
+        renderer.renderMap(game.worldMap);
+
         // var width = $("width"); // rep for height
 
-        // var c=document.getElementById("myCanvas");
-		// var ctx=c.getContext("2d");
-
+        
         // var g = new Game(new GameCanvas(ctx, width, height));
         // var g = new Game(ctx, width, height);
         // g.start(); // starter longpolling
