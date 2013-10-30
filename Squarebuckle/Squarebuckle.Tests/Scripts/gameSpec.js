@@ -25,3 +25,10 @@ describe("Game", function() {
 		expect(game.getMap()).toBe("json map");
 	});
 });
+
+// LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOK HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEERE
+// WHEN RETURNING NEXT TIME:
+// testen over funker fint, men vi trenger en til test for å sjekke at onSuccessCallBack gjør det riktige,
+// som er å sette innholdet fra $.post -responsen.
+
+// AAah nei nå vet jeg det.. vi mocker onSuccessCallBack og sjekker at den er kjørt...? eller blir det å teste for mye internals?
