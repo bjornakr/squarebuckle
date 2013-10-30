@@ -113,13 +113,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="Controllers\JasmineController.cs" />
-    <Compile Include="Core\EmptyWorldMapBuilder.cs" />
-=======
->>>>>>> origin/master
-    <Compile Include="Core\TileTest.cs" />
     <Compile Include="Core\EmptyWorldMapBuilderTest.cs" />
+    <Compile Include="Core\TileTest.cs" />
     <Compile Include="Core\WorldMapToJsonConverterTest.cs" />
     <Compile Include="Core\WorldMapTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

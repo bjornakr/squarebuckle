@@ -3,7 +3,6 @@ Z:\Dokumenter\Programmering\squarebuckle\Squarebuckle\Squarebuckle.Tests\bin\Deb
 Z:\Dokumenter\Programmering\squarebuckle\Squarebuckle\Squarebuckle.Tests\bin\Debug\Squarebuckle.Tests.pdb
 Z:\Dokumenter\Programmering\squarebuckle\Squarebuckle\Squarebuckle.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
 Z:\Dokumenter\Programmering\squarebuckle\Squarebuckle\Squarebuckle.Tests\bin\Debug\Newtonsoft.Json.dll
-Z:\Dokumenter\Programmering\squarebuckle\Squarebuckle\Squarebuckle.Tests\bin\Debug\nunit.framework.dll
 Z:\Dokumenter\Programmering\squarebuckle\Squarebuckle\Squarebuckle.Tests\bin\Debug\Squarebuckle.dll
 Z:\Dokumenter\Programmering\squarebuckle\Squarebuckle\Squarebuckle.Tests\bin\Debug\System.Net.Http.Formatting.dll
 Z:\Dokumenter\Programmering\squarebuckle\Squarebuckle\Squarebuckle.Tests\bin\Debug\System.Web.Helpers.dll

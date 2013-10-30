@@ -1,18 +1,23 @@
-var Game = (function () {
-
-    var Game = function(config) {
-        this.config = config;
+var Game = (function() {
+    var Game = function() {
+        this._worldMap = "hei";
     };
+
+    Object.defineProperty(Game.prototype, "worldMap", {
+        get: function() {
+            return this._worldMap;
+        },
+        set: function(value) {
+            this._worldMap = value;
+        }
+    });
 
     Game.prototype.start = function () {
-        this.config.$.post("WorldMap/Fetch", function (response) {
-            //console.log("RETURN data: nothing");
+        var _this = this;
+        $.post("WorldMap/Fetch", function (response) {
+            _this.worldMap = response;
         });
-    };
-
-    Game.prototype.getMap = function () {
-        return "json map";
-    };
+    }
 
     return Game;
 })();

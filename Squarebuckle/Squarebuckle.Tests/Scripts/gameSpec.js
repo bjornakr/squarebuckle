@@ -1,34 +1,37 @@
 describe("Game", function() {
+	var server,
+		game;
+
+	beforeEach(function() {
+        server = sinon.fakeServer.create();
+        game = new Game();
+	});
 
 	afterEach(function() {
-		jQuery.post.restore();
+        server.restore();
 	});
 
-	it("should get a world map when starting a new game", function() {
-		// Given
-        jQueryApi = {
-            "post": function (url, onSuccessCallBack) { }
-        };
-        jQueryMock = sinon.mock(jQueryApi);
-        jQueryMock.expects("post").once().withArgs("WorldMap/Fetch");
-
-		var config = { "$": jQueryApi };
-		var game = new Game(config);
-
-		sinon.stub(jQuery, "post").yieldsTo("success", "json map");
-
+    it("should get world map from server", function() {
+        // Given
+        server.respondWith("json data");
+        
 		// When
-		game.start();
+        game.start();
+        server.respond();
+        
+        // Then
+        expect(game.worldMap).toBe("json data");
+    });
 
-		// Then
-        jQueryMock.verify();
-		expect(game.getMap()).toBe("json map");
-	});
+    it("should get another world map from server", function() {
+        // Given
+        server.respondWith("some world map");
+        
+		// When
+        game.start();
+        server.respond();
+        
+        // Then
+        expect(game.worldMap).toBe("some world map");
+    });
 });
-
-// LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOK HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEERE
-// WHEN RETURNING NEXT TIME:
-// testen over funker fint, men vi trenger en til test for å sjekke at onSuccessCallBack gjør det riktige,
-// som er å sette innholdet fra $.post -responsen.
-
-// AAah nei nå vet jeg det.. vi mocker onSuccessCallBack og sjekker at den er kjørt...? eller blir det å teste for mye internals?
