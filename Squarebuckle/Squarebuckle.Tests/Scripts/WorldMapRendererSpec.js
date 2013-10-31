@@ -10,6 +10,7 @@ describe("World map renderer", function ()
     beforeEach(function() {
         canvasApi = {
             fillRect: function (x, y, width, height) { }
+            //fillStyle: function (color) { }
         };
         mock = sinon.mock(canvasApi);
         renderer = new WorldMapRenderer(canvasApi);
@@ -135,6 +136,21 @@ describe("World map renderer", function ()
         mock.verify();
     });
 
-    
+    it("should draw grass that is green", function() {
+        // Given
+        var fillRectSpy = sinon.spy(canvasApi, "fillRect");
+
+        Object.defineProperty(Object.getPrototypeOf(canvasApi), "fillStyle", {
+            set: function(value) {
+                sinon.assert.notCalled(fillRectSpy)
+                expect(value).toBe("#00FF00");
+            }
+        });
+
+        // When
+        renderer.renderMap(mapWithOneTile);
+
+        canvasApi.fillRect.restore();
+    });
 
 });

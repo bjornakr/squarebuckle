@@ -113,7 +113,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\UnitTest1.cs" />
+    <Compile Include="Controllers\WorldMapControllerTest.cs" />
     <Compile Include="Core\EmptyWorldMapBuilderTest.cs" />
     <Compile Include="Core\TileTest.cs" />
     <Compile Include="Core\WorldMapToJsonConverterTest.cs" />

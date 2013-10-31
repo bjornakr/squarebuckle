@@ -3,6 +3,7 @@ namespace Squarebuckle.Core
 {
     public class EmptyWorldMapBuilder
     {
+        // TODO: Use uint
         public WorldMap Build(int height, int width)
         {
             var worldMap = new WorldMap(height, width);

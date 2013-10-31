@@ -3,17 +3,21 @@
 
 $(function () {
     $("#new_map_btn").click(function () {
+        var height = $("#height").val();
+        var width = $("#width").val();
+
         console.log("POW!");
-        var game = new Game();
-        game.start();
-        
-        var c=document.getElementById("world_map_canvas");
-        var ctx=c.getContext("2d");
-        var renderer = new WorldMapRenderer(ctx);
+        var game = new Game(height, width);
+        game.start(function() {
+            var c=document.getElementById("world_map_canvas");
+            var ctx=c.getContext("2d");
+            var renderer = new WorldMapRenderer(ctx);
 
-        renderer.renderMap(game.worldMap);
+            console.log("Calling get on game.worldMap");
+            console.log(game.worldMap);
+            renderer.renderMap(game.worldMap);
+        });
 
-        // var width = $("width"); // rep for height
 
         
         // var g = new Game(new GameCanvas(ctx, width, height));
