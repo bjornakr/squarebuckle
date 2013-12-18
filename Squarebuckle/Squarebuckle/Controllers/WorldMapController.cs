@@ -16,7 +16,6 @@ namespace Squarebuckle.Controllers
             var jsonConverter = new WorldMapToJsonConverter();
             JObject worldMapAsJObject = jsonConverter.Convert(worldMap);
             string mapAsJson = worldMapAsJObject.ToString();
-            //return new ContentResult { Conte = mapAsJson };
             return new ContentResult { Content = mapAsJson, ContentType = "application/json" };
         }
     }
