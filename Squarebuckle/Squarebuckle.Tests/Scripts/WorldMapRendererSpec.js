@@ -26,6 +26,16 @@ describe("World map renderer", function ()
         ]
     };
 
+    var mapWithOneWaterTile = {
+        "tiles": [
+            [
+                {
+                    "type": "Water"
+                }
+            ]
+        ]
+    };
+
     var mapWithTwoHorizontalTiles = {
         "tiles": [
             [
@@ -137,20 +147,21 @@ describe("World map renderer", function ()
     });
 
     it("should draw grass that is green", function() {
-        // Given
-        var fillRectSpy = sinon.spy(canvasApi, "fillRect");
-
-        Object.defineProperty(Object.getPrototypeOf(canvasApi), "fillStyle", {
-            set: function(value) {
-                sinon.assert.notCalled(fillRectSpy)
-                expect(value).toBe("#00FF00");
-            }
-        });
-
-        // When
-        renderer.renderMap(mapWithOneTile);
-
-        canvasApi.fillRect.restore();
+        shouldDrawMapWithColor(mapWithOneTile, "#00FF00");
     });
 
+    it("should draw water that is blue", function() {
+        shouldDrawMapWithColor(mapWithOneWaterTile, "#0000FF");
+    });
+
+    var shouldDrawMapWithColor = function(map, color) {
+        // Given
+        canvasApi.fillRect = function (x, y, width, height) {
+            // Then
+            expect(canvasApi.fillStyle).toBe(color);
+        };
+
+        // When
+        renderer.renderMap(map);        
+    };
 });

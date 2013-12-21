@@ -13,8 +13,10 @@ var Game = (function() {
         }
     });
 
-    Game.prototype.start = function(doneCallBack) { // TODO: Implement as promise.
+    Game.prototype.start = function() {
         var _this = this;
+        var postBackPromise = new $.Deferred();
+
         $.post("WorldMap/FetchMap",
             {
                 height: _this._height,
@@ -22,8 +24,10 @@ var Game = (function() {
             }
         ).done(function (response) {
             _this.worldMap = response;
-            doneCallBack();
+            postBackPromise.resolve();
         });
+
+        return postBackPromise;
     }
 
     return Game;

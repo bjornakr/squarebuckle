@@ -78,10 +78,19 @@ describe("Game", function() {
         _expectJQueryPostToHaveBeenCalledWithHeightAndWidth(90, 10);
     });
 
-    it("start should not use a callback, but a promise", function() {
+    it("start should use a promise", function() {
+        // Given
         server.respondWith("{ someProperty: 'some world map, but that is irrelevant for this test' }");
         var game = new Game(90, 10);
-        game.start(undefined);
+        var functionWasCalled = false;
+
+        // When
+        game.start().done(function() {
+            functionWasCalled = true;
+        });
         server.respond();
+
+        // Then
+        expect(functionWasCalled).toBeTruthy();
     });
 });

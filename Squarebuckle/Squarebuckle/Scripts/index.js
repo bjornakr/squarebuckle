@@ -8,7 +8,7 @@ $(function () {
 
         console.log("POW!");
         var game = new Game(height, width);
-        game.start(function() {
+        game.start().done(function() {
             var c=document.getElementById("world_map_canvas");
             var ctx=c.getContext("2d");
             var renderer = new WorldMapRenderer(ctx);
