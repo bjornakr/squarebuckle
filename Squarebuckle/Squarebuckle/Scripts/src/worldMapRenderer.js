@@ -1,7 +1,7 @@
-var WorldMapRenderer = (function () {
+define(function() {
     var WorldMapRenderer = function(canvas) {
-        this.canvas = canvas;
-    };
+            this.canvas = canvas;
+        };
 
     WorldMapRenderer.prototype.renderMap = function (json) { // TODO: Rename json to something better (jsonMap)
         this.canvas.fillStyle = "#00FF00";
@@ -18,4 +18,4 @@ var WorldMapRenderer = (function () {
     };
 
     return WorldMapRenderer;
-})();
+});

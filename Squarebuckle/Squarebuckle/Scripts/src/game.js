@@ -1,8 +1,8 @@
-var Game = (function() {
+define(["jquery"], function($) {
     var Game = function(height, width) {
-        this._height = height;
-        this._width = width;
-    };
+           this._height = height;
+            this._width = width;
+        };
 
     Object.defineProperty(Game.prototype, "worldMap", {
         get: function() {
@@ -31,4 +31,4 @@ var Game = (function() {
     }
 
     return Game;
-})();
+});

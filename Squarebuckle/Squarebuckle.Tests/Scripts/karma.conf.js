@@ -5,20 +5,21 @@ module.exports = function(config) {
   config.set({
 
     // base path, that will be used to resolve files and exclude
-    basePath: '',
+    basePath: '../..',
 
 
     // frameworks to use
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'requirejs'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      '../../Squarebuckle/Scripts/jquery-2.0.3.js',
-      '../../Squarebuckle/Scripts/worldMapRenderer.js',
-      '../../Squarebuckle/Scripts/game.js',
-      'sinon/sinon-1.7.3.js',
-      "*.js"
+        // 'lib/require.js',
+        {pattern: 'Squarebuckle.Tests/Scripts/lib/**/*.js', included: false},
+        // {pattern: 'src/**/*.js', included: false},
+        {pattern: 'Squarebuckle/Scripts/**/*.js', included: false},
+        {pattern: 'Squarebuckle.Tests/Scripts/test/**/*Spec.js', included: false},
+        'Squarebuckle.Tests/Scripts/test-main.js'
     ],
 
 
