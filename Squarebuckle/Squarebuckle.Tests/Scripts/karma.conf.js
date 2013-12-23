@@ -18,7 +18,7 @@ module.exports = function(config) {
         {pattern: 'Squarebuckle.Tests/Scripts/lib/**/*.js', included: false},
         // {pattern: 'src/**/*.js', included: false},
         {pattern: 'Squarebuckle/Scripts/**/*.js', included: false},
-        {pattern: 'Squarebuckle.Tests/Scripts/test/**/*Spec.js', included: false},
+        {pattern: 'Squarebuckle.Tests/Scripts/test/**/*.js', included: false},
         'Squarebuckle.Tests/Scripts/test-main.js'
     ],
 

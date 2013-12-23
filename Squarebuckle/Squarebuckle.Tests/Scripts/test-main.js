@@ -2,9 +2,9 @@ var tests = Object.keys(window.__karma__.files).filter(function (file) {
       return /Spec\.js$/.test(file);
 });
 
-//for (file in window.__karma__.files) {
-//	console.log(file);
-//}
+for (file in window.__karma__.files) {
+	console.log(file);
+}
 
 requirejs.config({
     // Karma serves files from '/base'
@@ -19,7 +19,8 @@ requirejs.config({
     
     paths: {
     	"sinon": "../../../Squarebuckle.Tests/Scripts/lib/sinon-1.7.3",
-    	"jquery": "../lib/jquery-2.0.3"
+    	"jquery": "../lib/jquery-2.0.3",
+        "test": "../../../Squarebuckle.Tests/Scripts/test"
     },
 
     shim: {
