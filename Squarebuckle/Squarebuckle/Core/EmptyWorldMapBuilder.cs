@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Squarebuckle.Core
 {
-    public class EmptyWorldMapBuilder
+    public class WorldMapBuilder
     {
         // TODO: Use uint
         public WorldMap Build(int height, int width)

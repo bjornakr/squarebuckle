@@ -18,6 +18,15 @@ define(["tileType"], function(TileType) {
                 ]
             ]
         },
+        mapWithCustomTile: {
+            "tiles": [
+                [
+                    {
+                        "type": "CustomTile"
+                    }
+                ]
+            ]
+        },
         mapWithGrassAndWaterOnOneRow: {
             "tiles": [
                 [

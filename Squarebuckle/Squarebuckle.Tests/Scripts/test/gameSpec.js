@@ -1,87 +1,46 @@
-define(["sinon", "game"], function(sinon, Game) {
+define(["game", "test/gameSpecHelper"], function(Game, GameSpecHelper) {
     describe("Game", function() {
-        var server;
+        var helper;
 
         beforeEach(function() {
-            server = sinon.fakeServer.create();
+            helper = new GameSpecHelper();
         });
 
         afterEach(function() {
-            server.restore();
         });
 
-        it("should get world map from server", function() {
-            // Given
-            var game = new Game(40, 50);
-
-            // TODO: // "json data"->should be json, not a string, to reflect the actual server's response
-            server.respondWith("json data"); 
-            
-            // When
-            game.start(function() { });
-            server.respond();
-            
-            // Then
-            expect(game.worldMap).toBe("json data");
+        it("should get world map and config from server", function() {
+            var mapAndConfig = {
+                mapOfTileTypeToColor: { "Test": 1 },
+                worldMap: { "Test": 2 }
+            };
+            helper.shouldGetWorldMapAndConfigFromServer(mapAndConfig);
         });
 
-        it("should get another world map from server", function() {
-            // Given
-            var game = new Game(40, 50);
-
-            // TODO "some world map" ->should be json, not a string, to reflect the actual server's response
-            server.respondWith("some world map");
-            
-            // When
-            game.start(function() { });
-            server.respond();
-            
-            // Then
-            expect(game.worldMap).toBe("some world map");
+        it("should get another world map and config from server", function() {
+            var mapAndConfig = {
+                mapOfTileTypeToColor: { "Test": "Testdata xxx" },
+                worldMap: { "Test": "Testdata yyy" }
+            };
+            helper.shouldGetWorldMapAndConfigFromServer(mapAndConfig);
         });
 
         it("should get world map from server with correct dimensions", function() {
-            // Given
-            var game = new Game(40, 50);
-            _spyOnJQueryPost();
-
-            // When
-            game.start(function() { });
-
-            // Then
-            _expectJQueryPostToHaveBeenCalledWithHeightAndWidth(40, 50);
+            helper.shouldGetWorldMapFromServerWithCorrectDimensions(40, 50);
         });
 
-        var _spyOnJQueryPost = function() {
-            server.respondWith("{ someProperty: 'some world map, but that is irrelevant for this test' }");
-            sinon.spy(jQuery, "post");
-        };
-
-        var _expectJQueryPostToHaveBeenCalledWithHeightAndWidth = function(height, width) {
-            var spyCall = jQuery.post.getCall(0);
-            expect(spyCall.args[1]).toEqual(
-            {
-                height: height,
-                width: width
-            });
-            jQuery.post.restore();
-        };
-
         it("should get another world map from server with correct dimensions", function() {
-            // Given
-            var game = new Game(90, 10);
-            _spyOnJQueryPost();
-
-            // When
-            game.start(function() { });
-
-            // Then
-            _expectJQueryPostToHaveBeenCalledWithHeightAndWidth(90, 10);
+            helper.shouldGetWorldMapFromServerWithCorrectDimensions(90, 10);
         });
 
         it("start should use a promise", function() {
             // Given
-            server.respondWith("{ someProperty: 'some world map, but that is irrelevant for this test' }");
+            var mapAndConfig = {
+                mapOfTileTypeToColor: { "Test": 1 },
+                worldMap: { "Test": 2 }
+            };
+            var deferred = new $.Deferred();
+            spyOn($, "post").andReturn(deferred);
             var game = new Game(90, 10);
             var functionWasCalled = false;
 
@@ -89,7 +48,7 @@ define(["sinon", "game"], function(sinon, Game) {
             game.start().done(function() {
                 functionWasCalled = true;
             });
-            server.respond();
+            deferred.resolve(mapAndConfig);
 
             // Then
             expect(functionWasCalled).toBeTruthy();

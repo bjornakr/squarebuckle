@@ -12,7 +12,7 @@ namespace Squarebuckle.Controllers
     {
         public ContentResult FetchMap(int width, int height) // TODO: Bytt om på width og height.
         {
-            WorldMap worldMap = new EmptyWorldMapBuilder().Build(height, width);
+            WorldMap worldMap = new WorldMapBuilder().Build(height, width);
             var jsonConverter = new WorldMapToJsonConverter();
             JObject worldMapAsJObject = jsonConverter.Convert(worldMap);
             string mapAsJson = worldMapAsJObject.ToString();

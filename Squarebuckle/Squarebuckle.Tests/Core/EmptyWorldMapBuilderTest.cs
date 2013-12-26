@@ -11,7 +11,7 @@ namespace Squarebuckle.Tests.Core
         public void New_Map_Contains_Grass_Only()
         {
             // Given
-            WorldMap newMap = new EmptyWorldMapBuilder().Build(30, 40);
+            WorldMap newMap = new WorldMapBuilder().Build(30, 40);
 
             // Then
             for (int x = 0; x < newMap.Height; x++)

@@ -5,8 +5,7 @@
 
 define(["sinon", "worldMapRenderer", "test/worldMapRendererSpecHelper", "test/testMaps"], 
     function(sinon, WorldMapRenderer, WorldMapRendererSpecHelper, TestMaps) {
-    describe("World map renderer", function ()
-    {
+    describe("World map renderer", function () {
         var canvasApi,
             mock,
             renderer,
@@ -106,6 +105,15 @@ define(["sinon", "worldMapRenderer", "test/worldMapRendererSpecHelper", "test/te
 
         it("should use black tile when tile type is not defined", function() {
             helper.shouldDrawMapWithColor(TestMaps.mapWithUndefinedTile, renderer.blackColor);
+        });
+
+        it("should display a custom tile", function() {
+            // Given
+            var color = "#123456";
+            renderer.mapTileTypeToColor("CustomTile", color);
+
+            // Then
+            helper.shouldDrawMapWithColor(TestMaps.mapWithCustomTile, color);
         });
     });
 });

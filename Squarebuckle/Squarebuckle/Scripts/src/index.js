@@ -16,25 +16,14 @@ $(function () {
             console.log("Calling get on game.worldMap");
             console.log(game.worldMap);
             renderer.renderMap(game.worldMap);
+
+
+
+            // TEST
+            // var factory = new WorldMapRendererFactory();
+            // var renderer = factory.create();
+            // renderer.renderMap(game.mapOfTileTypeToColor, game.worldMap);
         });
-
-
-        
-        // var g = new Game(new GameCanvas(ctx, width, height));
-        // var g = new Game(ctx, width, height);
-        // g.start(); // starter longpolling
-
-        // var mapAsJson = game.generatemap(width, height);
-		// var renderer = new WorldMapRenderer(ctx);
-        // renderer.renderMap(mapAsJson);
-
-        /*
-        $.post("Main/SquareMeUp", function (data) {
-            console.log("RETURN data: " + data);
-            console.log(data);
-            $("#whatever").text(data);
-        });
-        */
     });
 });
 

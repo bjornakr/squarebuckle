@@ -15,7 +15,7 @@ define(function() {
 	    };
 
 	    // When
-	    _renderer.renderMap(map);        
+	    _renderer.renderMap(map);
 	};
 
 	return WorldMapRendererSpecHelper;
