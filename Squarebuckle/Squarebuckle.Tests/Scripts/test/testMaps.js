@@ -1,10 +1,10 @@
-define(["tileType"], function(TileType) {
+define(function() {
     return {
-        mapWithOneTile: {
+        mapWithOneGrassTile: {
             "tiles": [
                 [
                     {
-                        "type": TileType.GRASS
+                        "type": "Grass"
                     }
                 ]
             ]
@@ -13,16 +13,7 @@ define(["tileType"], function(TileType) {
             "tiles": [
                 [
                     {
-                        "type": TileType.WATER
-                    }
-                ]
-            ]
-        },
-        mapWithCustomTile: {
-            "tiles": [
-                [
-                    {
-                        "type": "CustomTile"
+                        "type": "Water"
                     }
                 ]
             ]
@@ -31,10 +22,10 @@ define(["tileType"], function(TileType) {
             "tiles": [
                 [
                     {
-                        "type": TileType.GRASS
+                        "type": "Grass"
                     },
                     {
-                        "type": TileType.WATER
+                        "type": "Water"
                     }
                 ]
             ]
@@ -43,12 +34,12 @@ define(["tileType"], function(TileType) {
             "tiles": [
                 [
                     {
-                        "type": TileType.GRASS
+                        "type": "Grass"
                     }
                 ],
                 [
                     {
-                        "type": TileType.GRASS
+                        "type": "Grass"
                     }
                 ]
             ]
@@ -57,35 +48,26 @@ define(["tileType"], function(TileType) {
             "tiles": [
                 [ // Row 0
                     {
-                        "type": TileType.GRASS
+                        "type": "Grass"
                     },
                     {
-                        "type": TileType.GRASS
+                        "type": "Grass"
                     }
                 ],
                 [ // Row 1
                     {
-                        "type": TileType.GRASS
+                        "type": "Grass"
                     },
                     {
-                        "type": TileType.GRASS
+                        "type": "Grass"
                     }
                 ],
                 [ // Row 2
                     {
-                        "type": TileType.GRASS
+                        "type": "Grass"
                     },
                     {
-                        "type": TileType.GRASS
-                    }
-                ]
-            ]
-        },
-        mapWithUndefinedTile: {
-            "tiles": [
-                [
-                    {
-                        "type": "undefinedTileType"
+                        "type": "Grass"
                     }
                 ]
             ]

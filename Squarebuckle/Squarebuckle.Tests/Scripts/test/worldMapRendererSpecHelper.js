@@ -1,22 +1,23 @@
-define(function() {
-	var _renderer;
+define(["worldMapRendererFactory"], function(WorldMapRendererFactory) {
 	var _canvasApi;
 
-	var WorldMapRendererSpecHelper = function(renderer, canvasApi) {
-		_renderer = renderer;
-		_canvasApi = canvasApi;
-	};
+	var WorldMapRendererSpecHelper = function() {
+	}
 
-	WorldMapRendererSpecHelper.prototype.shouldDrawMapWithColor = function(map, color) {
-    	// Given
-	    _canvasApi.fillRect = function (x, y, width, height) {
-	        // Then
-	        expect(_canvasApi.fillStyle).toBe(color);
-	    };
+	WorldMapRendererSpecHelper.prototype.shouldDrawMapWithColor = function(worldMap, tileTypeToColorMap, color) {
+		// Given
+		var factory = new WorldMapRendererFactory();
+        var canvas = {};
+        var renderer = factory.create(canvas, tileTypeToColorMap);
 
-	    // When
-	    _renderer.renderMap(map);
-	};
+        canvas.fillRect = function (x, y, width, height) {
+            // Then
+            expect(canvas.fillStyle).toBe(color);
+        };
+
+        // When
+        renderer.renderMap(worldMap);
+	}
 
 	return WorldMapRendererSpecHelper;
 });
