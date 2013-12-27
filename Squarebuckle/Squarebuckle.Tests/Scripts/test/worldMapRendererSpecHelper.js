@@ -1,5 +1,4 @@
 define(["worldMapRendererFactory"], function(WorldMapRendererFactory) {
-	var _canvasApi;
 
 	var WorldMapRendererSpecHelper = function() {
 	}
@@ -17,6 +16,13 @@ define(["worldMapRendererFactory"], function(WorldMapRendererFactory) {
 
         // When
         renderer.renderMap(worldMap);
+	}
+
+	WorldMapRendererSpecHelper.prototype.expectFillRectToBeCalledWith = function(canvas, fillRectArgs) {
+		for (var i = 0; i < fillRectArgs.length; i++) {
+			expect(canvas.fillRect.calls[i].args).toEqual(fillRectArgs[i]);
+		}
+        expect(canvas.fillRect.callCount).toBe(fillRectArgs.length);
 	}
 
 	return WorldMapRendererSpecHelper;

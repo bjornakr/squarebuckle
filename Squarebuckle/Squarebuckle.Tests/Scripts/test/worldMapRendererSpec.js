@@ -1,80 +1,82 @@
-/// <reference path="../../Squarebuckle/Scripts/worldRenderer.js" />
-/// <reference path="../../Squarebuckle.Tests/Scripts/sinon/sinon-1.7.3.js" />
-//   baseUrl: '/base/Squarebuckle/Scripts/src',
-//        "sinon": "../../../Squarebuckle.Tests/Scripts/lib/sinon-1.7.3",
-
 define([
-    "sinon",
     "worldMapRenderer",
     "test/worldMapRendererSpecHelper",
     "test/testMaps",
     "worldMapRendererFactory"],
     function(
-        sinon,
         WorldMapRenderer,
         WorldMapRendererSpecHelper,
         TestMaps,
         WorldMapRendererFactory) {
     describe("World map renderer", function () {
-        var canvasApi;
-        var mock;
+        var canvas;
         var renderer;
         var helper;
 
         beforeEach(function() {
-            canvasApi = {
+            canvas = {
                 fillRect: function (x, y, width, height) { }
             };
-            mock = sinon.mock(canvasApi);
             var mapOfTileTypeToColor = {};
-            renderer = new WorldMapRenderer(canvasApi, mapOfTileTypeToColor);
-            helper = new WorldMapRendererSpecHelper(canvasApi);
+            var factory = new WorldMapRendererFactory();
+            renderer = factory.create(canvas, mapOfTileTypeToColor);
+            helper = new WorldMapRendererSpecHelper();
         });
 
         it("should draw a tile from json", function() {
             // Given
-            mock.expects("fillRect").once().withExactArgs(0, 0, renderer.TILE_SIZE, renderer.TILE_SIZE);
-            
+            spyOn(canvas, "fillRect");
+
             // When
             renderer.renderMap(TestMaps.mapWithOneGrassTile);
             
             // Then
-            mock.verify();
+            helper.expectFillRectToBeCalledWith(canvas,
+                [[0, 0, renderer.TILE_SIZE, renderer.TILE_SIZE]]
+            );
         });
 
         it("should draw two horizontal tiles", function() {
             // Given
-            mock.expects("fillRect").once().withExactArgs(0, 0, renderer.TILE_SIZE, renderer.TILE_SIZE);
-            mock.expects("fillRect").once().withExactArgs(renderer.TILE_SIZE, 0,
-                renderer.TILE_SIZE, renderer.TILE_SIZE);
+            spyOn(canvas, "fillRect");
             
             // When
             renderer.renderMap(TestMaps.mapWithGrassAndWaterOnOneRow);
             
             // Then
-            mock.verify();
+            helper.expectFillRectToBeCalledWith(canvas,
+                [
+                    [0, 0, renderer.TILE_SIZE, renderer.TILE_SIZE],
+                    [renderer.TILE_SIZE, 0, renderer.TILE_SIZE, renderer.TILE_SIZE]
+                ]);
         });
 
         it("should draw two vertical tiles", function() {
             // Given
-            mock.expects("fillRect").once().withExactArgs(0, 0, renderer.TILE_SIZE, renderer.TILE_SIZE);
-            mock.expects("fillRect").once().withExactArgs(0, renderer.TILE_SIZE,
-                renderer.TILE_SIZE, renderer.TILE_SIZE);
-            
+            spyOn(canvas, "fillRect");
+
             // When
             renderer.renderMap(TestMaps.mapWithTwoVerticalTiles);
             
             // Then
-            mock.verify();
+            helper.expectFillRectToBeCalledWith(canvas,
+                [
+                    [0, 0, renderer.TILE_SIZE, renderer.TILE_SIZE],
+                    [0, renderer.TILE_SIZE, renderer.TILE_SIZE, renderer.TILE_SIZE]
+                ]);
         });
 
         it("should draw a map with height 3 and width 2", function() {
             // Given
+            spyOn(canvas, "fillRect");
+            var expectedFillRectArgs = [];
+
             for (var y = 0; y < 3; y++) {
                 for (var x = 0; x < 2; x++) {
-                    mock.expects("fillRect").once().withExactArgs(
+                    expectedFillRectArgs.push([
                         x * renderer.TILE_SIZE, y * renderer.TILE_SIZE,
-                         renderer.TILE_SIZE, renderer.TILE_SIZE);
+                        renderer.TILE_SIZE, renderer.TILE_SIZE
+                        ]);
                 }
             }
             
@@ -82,7 +84,7 @@ define([
             renderer.renderMap(TestMaps.mapWithWithHeight3AndWidth2);
             
             // Then
-            mock.verify();
+            helper.expectFillRectToBeCalledWith(canvas, expectedFillRectArgs);
         });
 
         it("should draw grass that is green", function() {
@@ -108,16 +110,16 @@ define([
                 "Grass": "#00FF00",
                 "Water": "#0000FF"
             };
-            var renderer = factory.create(canvasApi, tileTypeToColorMap);
+            var renderer = factory.create(canvas, tileTypeToColorMap);
 
             var fillRectInvokeCount = 0;
-            canvasApi.fillRect = function (x, y, width, height) {           
+            canvas.fillRect = function (x, y, width, height) {           
                 // Then
                 if (fillRectInvokeCount == 0) {
-                    expect(canvasApi.fillStyle).toBe(tileTypeToColorMap["Grass"]);
+                    expect(canvas.fillStyle).toBe(tileTypeToColorMap["Grass"]);
                 }
                 else {
-                    expect(canvasApi.fillStyle).toBe(tileTypeToColorMap["Water"]);
+                    expect(canvas.fillStyle).toBe(tileTypeToColorMap["Water"]);
                 }
                 fillRectInvokeCount++;
             };

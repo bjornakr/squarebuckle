@@ -18,15 +18,14 @@ requirejs.config({
     callback: window.__karma__.start,
     
     paths: {
-    	"sinon": "../../../Squarebuckle.Tests/Scripts/lib/sinon-1.7.3",
     	"jquery": "../lib/jquery-2.0.3",
         "test": "../../../Squarebuckle.Tests/Scripts/test"
     },
 
-    shim: {
-    	"sinon": {
-    		exports: "sinon"
-    	}
-    }
+    // shim: {
+    // 	"sinon": {
+    // 		exports: "sinon"
+    // 	}
+    // }
 
 });
