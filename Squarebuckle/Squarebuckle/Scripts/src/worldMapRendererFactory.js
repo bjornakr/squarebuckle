@@ -3,8 +3,8 @@ define(["worldMapRenderer"], function(WorldMapRenderer) {
 
 	};
 
-	WorldMapRendererFactory.prototype.create = function() {
-		return new WorldMapRenderer();
+	WorldMapRendererFactory.prototype.create = function(canvas, tileTypeToColorMap) {
+		return new WorldMapRenderer(canvas, tileTypeToColorMap);
 	};
 
 	return WorldMapRendererFactory;

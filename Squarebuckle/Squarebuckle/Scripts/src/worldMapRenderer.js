@@ -2,13 +2,13 @@ define(["tileType"], function(TileType) {
     var _this;
     var _tileTypeToColor = {};
 
-    var WorldMapRenderer = function(canvas) {
+    var WorldMapRenderer = function(canvas, tileTypeToColorMap) {
         _this = this;
         this.canvas = canvas;
         this.TILE_SIZE = 10;
-
-        _tileTypeToColor[TileType.GRASS] = this.grassColor;
-        _tileTypeToColor[TileType.WATER] = this.waterColor;
+        _tileTypeToColor = tileTypeToColorMap;
+        //_tileTypeToColor[TileType.GRASS] = this.grassColor;
+        //_tileTypeToColor[TileType.WATER] = this.waterColor;
     };
 
     Object.defineProperty(WorldMapRenderer.prototype, "grassColor", {

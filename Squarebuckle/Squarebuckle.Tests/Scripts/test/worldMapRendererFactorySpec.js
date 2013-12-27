@@ -3,9 +3,11 @@ define(["worldMapRendererFactory", "worldMapRenderer"], function(Factory, WorldM
 		it("should create a WorldMapRenderer", function() {
 			// Given
 			var factory = new Factory();
+			var mapOfTileTypeToColor = {};
+			var canvas = {};
 
 			// When
-			var renderer = factory.create();
+			var renderer = factory.create(canvas, mapOfTileTypeToColor);
 
 			// Then
 			expect(renderer instanceof WorldMapRenderer).toBeTruthy();
@@ -18,13 +20,14 @@ define(["worldMapRendererFactory", "worldMapRenderer"], function(Factory, WorldM
 				"Mud": "#234567",
 				"Lava": "#FF1234"
 			};
+			var canvas = {};
 
 			// When
-			var renderer = factory.create(mapOfTileTypeToColor);
+			var renderer = factory.create(canvas, mapOfTileTypeToColor);
 
 			// Then
-			expect(renderer.colorOf("Mud")).toBe(colorConfig["Mud"]);
-			expect(renderer.colorOf("Lava")).toBe(colorConfig["Lava"]);
+			expect(renderer.colorOf("Mud")).toBe(mapOfTileTypeToColor["Mud"]);
+			expect(renderer.colorOf("Lava")).toBe(mapOfTileTypeToColor["Lava"]);
 		});
 
 		xit("should get a tile and color specification from the server", function() {

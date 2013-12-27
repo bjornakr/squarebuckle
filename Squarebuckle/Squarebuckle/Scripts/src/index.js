@@ -1,4 +1,4 @@
-﻿console.log("ZIP!");
+console.log("ZIP!");
 
 
 $(function () {
@@ -21,8 +21,8 @@ $(function () {
 
             // TEST
             // var factory = new WorldMapRendererFactory();
-            // var renderer = factory.create();
-            // renderer.renderMap(game.mapOfTileTypeToColor, game.worldMap);
+            // var renderer = factory.create(game.mapOfTileTypeToColor);
+            // renderer.renderMap(game.worldMap);
         });
     });
 });

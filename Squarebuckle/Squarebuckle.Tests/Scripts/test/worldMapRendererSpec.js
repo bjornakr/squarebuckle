@@ -16,7 +16,8 @@ define(["sinon", "worldMapRenderer", "test/worldMapRendererSpecHelper", "test/te
                 fillRect: function (x, y, width, height) { }
             };
             mock = sinon.mock(canvasApi);
-            renderer = new WorldMapRenderer(canvasApi);
+            var mapOfTileTypeToColor = {};
+            renderer = new WorldMapRenderer(canvasApi, mapOfTileTypeToColor);
             helper = new WorldMapRendererSpecHelper(renderer, canvasApi);
         });
 
